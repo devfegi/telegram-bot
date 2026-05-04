@@ -270,12 +270,12 @@ async def set_language(message: Message, state: FSMContext):
 
 # ---------------- ПРАЙС ----------------
 
-@dp.message(F.text.in_(["Труба", "Quvur"]))
+@dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]))
 async def pipe_price(message: Message):
     file = FSInputFile("atmz_price_pipes.pdf")
     await message.answer_document(file)
 
-@dp.message(F.text.in_(["Профиль", "Profil"]))
+@dp.message(F.text.in_(["Профильная труба", "Profil quvur"]))
 async def pipe_price(message: Message):
     file = FSInputFile("atmz_price_profile.pdf")
     await message.answer_document(file)
