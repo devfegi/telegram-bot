@@ -275,7 +275,9 @@ async def pipe_price(message: Message, state: FSMContext):
     current_state = await state.get_state()
 
     # ❗ ЕСЛИ человек в процессе расчета — НЕ мешаем
-    if current_state is not None:
+    from aiogram.fsm.state import default_state
+
+    if current_state != default_state:
         return
 
     file = FSInputFile("atmz_price_pipes.pdf")
@@ -285,7 +287,9 @@ async def pipe_price(message: Message, state: FSMContext):
 async def pipe_price(message: Message, state: FSMContext):
     current_state = await state.get_state()
 
-    if current_state is not None:
+    from aiogram.fsm.state import default_state
+
+    if current_state != default_state:
         return
 
     file = FSInputFile("atmz_price_profile.pdf")
