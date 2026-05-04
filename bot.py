@@ -155,7 +155,7 @@ def volume_menu(lang="ru"):
 def price_menu_ru():
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Труба"), KeyboardButton(text="Профиль")],
+            [KeyboardButton(text="Круглая труба"), KeyboardButton(text="Профильная труба")],
             [KeyboardButton(text="⬅️ Назад")]
         ],
         resize_keyboard=True
@@ -164,7 +164,7 @@ def price_menu_ru():
 def price_menu_uz():
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Quvur"), KeyboardButton(text="Profil")],
+            [KeyboardButton(text="Dumaloq quvur"), KeyboardButton(text="Profil quvur")],
             [KeyboardButton(text="⬅️ Orqaga")]
         ],
         resize_keyboard=True
