@@ -271,12 +271,23 @@ async def set_language(message: Message, state: FSMContext):
 # ---------------- ПРАЙС ----------------
 
 @dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]))
-async def pipe_price(message: Message):
+async def pipe_price(message: Message, state: FSMContext):
+    current_state = await state.get_state()
+
+    # ❗ ЕСЛИ человек в процессе расчета — НЕ мешаем
+    if current_state is not None:
+        return
+
     file = FSInputFile("atmz_price_pipes.pdf")
     await message.answer_document(file)
 
 @dp.message(F.text.in_(["Профильная труба", "Profil quvur"]))
-async def pipe_price(message: Message):
+async def pipe_price(message: Message, state: FSMContext):
+    current_state = await state.get_state()
+
+    if current_state is not None:
+        return
+
     file = FSInputFile("atmz_price_profile.pdf")
     await message.answer_document(file)
 
