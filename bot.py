@@ -270,28 +270,14 @@ async def set_language(message: Message, state: FSMContext):
 
 # ---------------- ПРАЙС ----------------
 
-@dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]))
-async def pipe_price(message: Message, state: FSMContext):
-    current_state = await state.get_state()
-
-    # ❗ ЕСЛИ человек в процессе расчета — НЕ мешаем
-    from aiogram.fsm.state import default_state
-
-    if current_state != default_state:
-        return
-
+@dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]), ~F.state)
+async def pipe_price(message: Message):
     file = FSInputFile("atmz_price_pipes.pdf")
     await message.answer_document(file)
 
-@dp.message(F.text.in_(["Профильная труба", "Profil quvur"]))
-async def pipe_price(message: Message, state: FSMContext):
-    current_state = await state.get_state()
 
-    from aiogram.fsm.state import default_state
-
-    if current_state != default_state:
-        return
-
+@dp.message(F.text.in_(["Профильная труба", "Profil quvur"]), ~F.state)
+async def pipe_price(message: Message):
     file = FSInputFile("atmz_price_profile.pdf")
     await message.answer_document(file)
 
