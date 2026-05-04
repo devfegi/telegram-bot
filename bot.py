@@ -48,7 +48,7 @@ def lang_menu():
 def main_menu():
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="💰 Прайс"), KeyboardButton(text="🧮 Рассчитать стоимость")],
+            [KeyboardButton(text="💰 Прайс"), KeyboardButton(text="🧮 Расчет")],
             [KeyboardButton(text="🌐 Веб-сайт"), KeyboardButton(text="📍 Локация")],
             [KeyboardButton(text="📞 Контакты")]
         ],
@@ -272,12 +272,12 @@ async def set_language(message: Message, state: FSMContext):
 
 @dp.message(F.text.in_(["Труба", "Quvur"]))
 async def pipe_price(message: Message):
-    file = FSInputFile("price_pipe.pdf")
+    file = FSInputFile("atmz_price_pipes.pdf")
     await message.answer_document(file)
 
 @dp.message(F.text.in_(["Профиль", "Profil"]))
 async def pipe_price(message: Message):
-    file = FSInputFile("price_profile.pdf")
+    file = FSInputFile("atmz_price_profile.pdf")
     await message.answer_document(file)
 
 # ---------------- КНОПКА НАЗАД ----------------
@@ -353,7 +353,7 @@ async def back_handler(message: Message, state: FSMContext):
 
 # ---------------- РАСЧЕТ ----------------
 
-@dp.message(F.text.in_(["🧮 Рассчитать стоимость", "🧮 Hisoblash"]))
+@dp.message(F.text.in_(["🧮 Расчет", "🧮 Hisoblash"]))
 async def calc_start(message: Message, state: FSMContext):
 
     data = await state.get_data()
