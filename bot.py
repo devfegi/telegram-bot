@@ -268,45 +268,6 @@ async def set_language(message: Message, state: FSMContext):
 
     await message.answer(text, reply_markup=menu)
 
-# ---------------- ПРАЙС ----------------
-
-@dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]))
-async def pipe_price(message: Message, state: FSMContext):
-
-    current_state = await state.get_state()
-
-    # 🔥 ВАЖНО: если пользователь в процессе расчета — игнорим
-    if current_state in [
-        Order.product.state,
-        Order.size.state,
-        Order.thickness.state,
-        Order.volume.state,
-        Order.city.state,
-        Order.phone.state
-    ]:
-        return
-
-    file = FSInputFile("atmz_price_pipes.pdf")
-    await message.answer_document(file)
-
-
-@dp.message(F.text.in_(["Профильная труба", "Profil quvur"]))
-async def profile_price(message: Message, state: FSMContext):
-
-    current_state = await state.get_state()
-
-    if current_state in [
-        Order.product.state,
-        Order.size.state,
-        Order.thickness.state,
-        Order.volume.state,
-        Order.city.state,
-        Order.phone.state
-    ]:
-        return
-
-    file = FSInputFile("atmz_price_profile.pdf")
-    await message.answer_document(file)
 
 # ---------------- КНОПКА НАЗАД ----------------
 
@@ -541,6 +502,48 @@ async def calc_phone(message: Message, state: FSMContext):
 
     await state.clear()
     await state.update_data(lang=lang)
+
+
+# ---------------- ПРАЙС ----------------
+
+@dp.message(F.text.in_(["Круглая труба", "Dumaloq quvur"]))
+async def pipe_price(message: Message, state: FSMContext):
+
+    current_state = await state.get_state()
+
+    # 🔥 ВАЖНО: если пользователь в процессе расчета — игнорим
+    if current_state in [
+        Order.product.state,
+        Order.size.state,
+        Order.thickness.state,
+        Order.volume.state,
+        Order.city.state,
+        Order.phone.state
+    ]:
+        return
+
+    file = FSInputFile("atmz_price_pipes.pdf")
+    await message.answer_document(file)
+
+
+@dp.message(F.text.in_(["Профильная труба", "Profil quvur"]))
+async def profile_price(message: Message, state: FSMContext):
+
+    current_state = await state.get_state()
+
+    if current_state in [
+        Order.product.state,
+        Order.size.state,
+        Order.thickness.state,
+        Order.volume.state,
+        Order.city.state,
+        Order.phone.state
+    ]:
+        return
+
+    file = FSInputFile("atmz_price_profile.pdf")
+    await message.answer_document(file)
+
 
 # ---------------- ЗАПУСК ----------------
 
