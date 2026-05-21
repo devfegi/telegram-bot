@@ -215,7 +215,7 @@ async def price(message: Message, state: FSMContext):
 @dp.message(F.text.in_(["📞 Контакты", "📞 Aloqa"]))
 async def contacts(message: Message):
     await message.answer(
-        "📞 +998 71 502-00-90\n📞 +998 90 326-08-08\n📧 atmz_steel@mail.ru"
+        "📞 +998 71 502-00-90\n📞 +998 77 502-28-28\n📧 atmz_steel@mail.ru"
     )
 
 @dp.message(F.text.in_(["📍 Локация", "📍 Lokatsiya"]))
