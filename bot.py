@@ -522,7 +522,7 @@ async def pipe_price(message: Message, state: FSMContext):
     ]:
         return
 
-    file = FSInputFile("atmz_price_pipes.pdf")
+    file = FSInputFile("atmz_price_truby.pdf")
     await message.answer_document(file)
 
 
